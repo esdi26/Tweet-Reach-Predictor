@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from textblob import TextBlob
+
 import re
 
 app = FastAPI()
@@ -18,7 +18,21 @@ async def score(request: Request):
     if not tweet:
         return JSONResponse({"error": "No tweet provided"}, status_code=400)
 
-    sentiment = TextBlob(tweet).sentiment.polarity
+    def simple_sentiment(text):
+    positive = ["good", "great", "awesome", "love", "happy", "amazing", "fantastic", "mükemmel", "harika", "seviyorum", "güzel"]
+    negative = ["bad", "terrible", "hate", "awful", "sad", "worst", "angry", "berbat", "kötü", "nefret", "rezalet"]
+    score = 0
+    text_lower = text.lower()
+    for p in positive:
+        if p in text_lower:
+            score += 1
+    for n in negative:
+        if n in text_lower:
+            score -= 1
+    return max(-1, min(1, score / 5))
+
+sentiment = simple_sentiment(tweet)
+
     score = 0
     reasons = []
     suggestions = []
