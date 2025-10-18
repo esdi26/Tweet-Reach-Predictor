@@ -1,41 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tweet Reach Predictor 🚀</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-6">
-  <div class="max-w-2xl w-full bg-gray-800 p-8 rounded-2xl shadow-lg">
-    <h1 class="text-3xl font-bold text-center mb-6">🚀 Tweet Reach Predictor</h1>
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tweet Reach Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-3xl w-full">
+      <header class="mb-6 text-center">
+        <h1 class="text-3xl font-extrabold tracking-tight">Tweet Reach Predictor</h1>
+        <p class="text-gray-300 mt-2">Hızlı analiz — en iyi etkileşim ihtimallerini tahmin eder.</p>
+      </header>
 
-    <textarea id="tweetInput" rows="5" placeholder="Write your tweet..." 
-      class="w-full p-4 bg-gray-700 rounded-lg focus:outline-none text-white resize-none"></textarea>
-    
-    <button id="analyzeBtn" 
-      class="mt-4 w-full bg-blue-500 hover:bg-blue-600 py-3 rounded-lg font-semibold text-white">
-      Analyze Tweet
-    </button>
+      <main class="bg-white/5 backdrop-blur rounded-2xl p-6 shadow-lg">
+        <label class="block text-sm font-semibold mb-2">Tweet (maks 280 karakter)</label>
+        <textarea id="tweetInput" rows="4" maxlength="280" class="w-full p-4 rounded-xl bg-gray-900 text-gray-100 placeholder-gray-400 border border-gray-700"></textarea>
 
-    <div id="result" class="mt-8 hidden">
-      <h2 class="text-2xl font-bold text-center mb-4">📊 Analysis Result</h2>
+        <div class="mt-4 flex items-center gap-3">
+          <button id="analyzeBtn" class="px-5 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-black font-bold shadow-lg hover:opacity-90">Analyze</button>
+          <button id="clearBtn" class="px-4 py-2 rounded-full border border-gray-700 text-gray-200">Clear</button>
+          <div id="loader" class="hidden ml-auto text-sm text-gray-400">Analiz ediliyor...</div>
+        </div>
 
-      <div class="w-full bg-gray-700 h-4 rounded-lg overflow-hidden mb-4">
-        <div id="scoreBar" class="h-4 bg-green-400 w-0 transition-all duration-500"></div>
-      </div>
+        <section id="result" class="hidden mt-6 bg-black/30 p-4 rounded-xl border border-gray-700">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-sm text-gray-300" id="toneValue">Sentiment: —</div>
+            <div class="text-sm text-gray-300" id="scoreValue">Score: —</div>
+          </div>
 
-      <p id="scoreValue" class="text-xl font-bold text-center mb-4"></p>
-      <p id="toneValue" class="text-center text-gray-400 mb-4"></p>
+          <div class="w-full bg-gray-800 h-4 rounded-lg overflow-hidden mb-3">
+            <div id="scoreBar" class="h-4 w-0 rounded-lg transition-all duration-700"></div>
+          </div>
 
-      <h3 class="text-lg font-semibold mt-6">✅ Reasons:</h3>
-      <ul id="reasonsList" class="list-disc list-inside space-y-1 text-gray-300 mb-4"></ul>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-300">Reasons</h3>
+              <ul id="reasonsList" class="mt-2 text-gray-200 list-disc ml-5"></ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-300">Suggestions</h3>
+              <ul id="suggestionsList" class="mt-2 text-gray-200 list-disc ml-5"></ul>
+            </div>
+          </div>
+        </section>
+      </main>
 
-      <h3 class="text-lg font-semibold mt-6">💡 Suggestions:</h3>
-      <ul id="suggestionsList" class="list-disc list-inside space-y-1 text-gray-400"></ul>
+      <footer class="mt-6 text-center text-xs text-gray-500">Deploy-ready for Vercel • FastAPI backend • TextBlob sentiment</footer>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="/script.js"></script>
+  </body>
 </html>
