@@ -2,7 +2,7 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
   const tweet = document.getElementById("tweetInput").value.trim();
   if (!tweet) return alert("Please enter a tweet!");
 
-  const res = await fetch("/api/score", {
+  const res = await fetch("/api/app", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ tweet }),
@@ -40,3 +40,4 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
     suggestionsList.appendChild(li);
   });
 });
+
