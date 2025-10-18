@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tweet Reach Predictor 🚀</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-6">
+  <div class="max-w-2xl w-full bg-gray-800 p-8 rounded-2xl shadow-lg">
+    <h1 class="text-3xl font-bold text-center mb-6">🚀 Tweet Reach Predictor</h1>
+
+    <textarea id="tweetInput" rows="5" placeholder="Write your tweet..." 
+      class="w-full p-4 bg-gray-700 rounded-lg focus:outline-none text-white resize-none"></textarea>
+    
+    <button id="analyzeBtn" 
+      class="mt-4 w-full bg-blue-500 hover:bg-blue-600 py-3 rounded-lg font-semibold text-white">
+      Analyze Tweet
+    </button>
+
+    <div id="result" class="mt-8 hidden">
+      <h2 class="text-2xl font-bold text-center mb-4">📊 Analysis Result</h2>
+
+      <div class="w-full bg-gray-700 h-4 rounded-lg overflow-hidden mb-4">
+        <div id="scoreBar" class="h-4 bg-green-400 w-0 transition-all duration-500"></div>
+      </div>
+
+      <p id="scoreValue" class="text-xl font-bold text-center mb-4"></p>
+      <p id="toneValue" class="text-center text-gray-400 mb-4"></p>
+
+      <h3 class="text-lg font-semibold mt-6">✅ Reasons:</h3>
+      <ul id="reasonsList" class="list-disc list-inside space-y-1 text-gray-300 mb-4"></ul>
+
+      <h3 class="text-lg font-semibold mt-6">💡 Suggestions:</h3>
+      <ul id="suggestionsList" class="list-disc list-inside space-y-1 text-gray-400"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
